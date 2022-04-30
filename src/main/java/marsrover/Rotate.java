@@ -3,16 +3,16 @@ package marsrover;
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum Turn {
-    RIGHT('r'), LEFT('l');
+public enum Rotate {
+    LEFT('l'), RIGHT('r');
 
     private final char command;
 
-    Turn(char command) {
+    Rotate(char command) {
         this.command = command;
     }
 
-    public static Optional<Turn> getValue(char cmd) {
+    public static Optional<Rotate> getValue(char cmd) {
         return Arrays.stream(values()).filter(value -> value.command == cmd).findAny();
     }
 
