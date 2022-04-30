@@ -29,6 +29,14 @@ public class Rover {
                 case W -> direction = Direction.N;
             }
         }
+        if ('l' == firstCommand) {
+            switch (direction) {
+                case N -> direction = Direction.W;
+                case E -> direction = Direction.N;
+                case S -> direction = Direction.E;
+                case W -> direction = Direction.S;
+            }
+        }
         switch (direction) {
             case N -> position = new Coordinates(this.position.x(), this.position.y() + 1);
             case S -> position = new Coordinates(this.position.x(), this.position.y() - 1);
