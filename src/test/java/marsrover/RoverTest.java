@@ -53,6 +53,27 @@ public class RoverTest {
         assertThat(rover.getDirection()).isEqualTo(Direction.E);
     }
 
+    @Test
+    void roverFacingEastTurningRight_shouldFaceSouth() {
+        Rover rover = aRover(coordinates(1, 2), Direction.E);
+        rover.execute('r');
+        assertThat(rover.getDirection()).isEqualTo(Direction.S);
+    }
+
+    @Test
+    void roverFacingSouthTurningRight_shouldFaceWest() {
+        Rover rover = aRover(coordinates(1, 2), Direction.S);
+        rover.execute('r');
+        assertThat(rover.getDirection()).isEqualTo(Direction.W);
+    }
+
+    @Test
+    void roverFacingWestTurningRight_shouldFaceNorth() {
+        Rover rover = aRover(coordinates(1, 2), Direction.W);
+        rover.execute('r');
+        assertThat(rover.getDirection()).isEqualTo(Direction.N);
+    }
+
     private Coordinates someCoordinates() {
         return coordinates(2, 7);
     }

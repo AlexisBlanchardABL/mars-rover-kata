@@ -1,9 +1,5 @@
 package marsrover;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Rover {
 
@@ -26,7 +22,12 @@ public class Rover {
     public void execute(char... commands) {
         char firstCommand = commands[0];
         if ('r' == firstCommand) {
-            direction = Direction.E;
+            switch (direction) {
+                case N -> direction = Direction.E;
+                case E -> direction = Direction.S;
+                case S -> direction = Direction.W;
+                case W -> direction = Direction.N;
+            }
         }
         switch (direction) {
             case N -> position = new Coordinates(this.position.x(), this.position.y() + 1);
