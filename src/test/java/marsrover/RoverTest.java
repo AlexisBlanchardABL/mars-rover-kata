@@ -21,29 +21,36 @@ public class RoverTest {
     @Test
     void roverMovesForwardOnceTowardNorth() {
         Rover rover = aRover(coordinates(1, 2), Direction.N);
-        rover.execute(new char[]{'f'});
+        rover.execute('f');
         assertThat(rover.getPosition()).isEqualTo(coordinates(1, 3));
     }
 
     @Test
     void roverMovesForwardOnceTowardEast() {
         Rover rover = aRover(coordinates(1, 2), Direction.E);
-        rover.execute(new char[]{'f'});
+        rover.execute('f');
         assertThat(rover.getPosition()).isEqualTo(coordinates(2, 2));
     }
 
     @Test
-    void roverMovesForwardOnceTowardSouth() {
+    void roverMovesForwardTowardSouth() {
         Rover rover = aRover(coordinates(1, 2), Direction.S);
-        rover.execute(new char[]{'f'});
+        rover.execute('f');
         assertThat(rover.getPosition()).isEqualTo(coordinates(1, 1));
     }
 
     @Test
-    void roverMovesForwardOnceTowardWest() {
+    void roverMovesForwardTowardWest() {
         Rover rover = aRover(coordinates(1, 2), Direction.W);
-        rover.execute(new char[]{'f'});
+        rover.execute('f');
         assertThat(rover.getPosition()).isEqualTo(coordinates(0, 2));
+    }
+
+    @Test
+    void roverFacingNorthTurningRight_shouldFaceEast() {
+        Rover rover = aRover(coordinates(1, 2), Direction.N);
+        rover.execute('r');
+        assertThat(rover.getDirection()).isEqualTo(Direction.E);
     }
 
     private Coordinates someCoordinates() {
