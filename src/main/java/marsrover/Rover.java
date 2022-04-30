@@ -1,6 +1,8 @@
 package marsrover;
 
 
+import java.util.List;
+
 public class Rover {
 
     private Direction direction;
@@ -21,27 +23,33 @@ public class Rover {
 
     public void execute(char... commands) {
         char firstCommand = commands[0];
-        if ('r' == firstCommand) {
-            switch (direction) {
-                case N -> direction = Direction.E;
-                case E -> direction = Direction.S;
-                case S -> direction = Direction.W;
-                case W -> direction = Direction.N;
-            }
-        }
-        if ('l' == firstCommand) {
-            switch (direction) {
-                case N -> direction = Direction.W;
-                case E -> direction = Direction.N;
-                case S -> direction = Direction.E;
-                case W -> direction = Direction.S;
-            }
+        if (List.of('r', 'l').contains(firstCommand)) {
+            turn(firstCommand);
         }
         switch (direction) {
             case N -> position = new Coordinates(this.position.x(), this.position.y() + 1);
             case S -> position = new Coordinates(this.position.x(), this.position.y() - 1);
             case E -> position = new Coordinates(this.position.x() + 1, this.position.y());
             case W -> position = new Coordinates(this.position.x() - 1, this.position.y());
+        }
+    }
+
+    private void turn(char command) {
+        if ('r' == command) {
+            direction = switch (direction) {
+                case N -> Direction.E;
+                case E -> Direction.S;
+                case S -> Direction.W;
+                case W -> Direction.N;
+            };
+        }
+        if ('l' == command) {
+            direction = switch (direction) {
+                case N -> Direction.W;
+                case E -> Direction.N;
+                case S -> Direction.E;
+                case W -> Direction.S;
+            };
         }
     }
 
