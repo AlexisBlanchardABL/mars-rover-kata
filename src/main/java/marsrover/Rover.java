@@ -26,12 +26,12 @@ public class Rover {
         if (List.of('r', 'l').contains(firstCommand)) {
             turn(firstCommand);
         }
-        switch (direction) {
-            case N -> position = new Coordinates(this.position.x(), this.position.y() + 1);
-            case S -> position = new Coordinates(this.position.x(), this.position.y() - 1);
-            case E -> position = new Coordinates(this.position.x() + 1, this.position.y());
-            case W -> position = new Coordinates(this.position.x() - 1, this.position.y());
-        }
+        position = switch (direction) {
+            case N -> new Coordinates(this.position.x(), this.position.y() + 1);
+            case S -> new Coordinates(this.position.x(), this.position.y() - 1);
+            case E -> new Coordinates(this.position.x() + 1, this.position.y());
+            case W -> new Coordinates(this.position.x() - 1, this.position.y());
+        };
     }
 
     private void turn(char command) {
