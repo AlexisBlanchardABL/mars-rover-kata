@@ -19,10 +19,11 @@ public class Rover {
     }
 
     public void execute(char[] commands) {
-        if(Direction.N.equals(direction)) {
-            position = new Coordinates(this.position.x(), this.position.y() + 1);
-        } else if (Direction.E.equals(direction)) {
-            position = new Coordinates(this.position.x() + 1, this.position.y());
+        switch (direction) {
+            case N -> position = new Coordinates(this.position.x(), this.position.y() + 1);
+            case S -> position = new Coordinates(this.position.x(), this.position.y() - 1);
+            case E -> position = new Coordinates(this.position.x() + 1, this.position.y());
+            case W -> position = new Coordinates(this.position.x() - 1, this.position.y());
         }
     }
 
