@@ -23,6 +23,7 @@ public class Rover {
         char firstCommand = commands[0];
         if (Turn.getValue(firstCommand).isPresent()) {
             turn(Turn.getValue(firstCommand).get());
+            return;
         }
         position = switch (direction) {
             case N -> new Coordinates(this.position.x(), this.position.y() + 1);

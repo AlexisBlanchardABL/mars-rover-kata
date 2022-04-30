@@ -64,4 +64,12 @@ public class RoverTurnsTest {
         assertThat(rover.getDirection()).isEqualTo(Direction.S);
     }
 
+    @Test
+    void roversPositionDoNotChangeWhenTurning() {
+        Coordinates position = coordinates(1, 2);
+        Rover rover = aRover(position, Direction.W);
+        rover.execute('l');
+        assertThat(rover.getPosition()).isEqualTo(position);
+    }
+
 }
