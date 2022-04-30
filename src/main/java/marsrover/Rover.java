@@ -1,17 +1,13 @@
 package marsrover;
 
-public record Rover(int x, int y, char direction) {
+public record Rover(Coordinates position, Direction direction) {
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public char getDirection() {
+    public Direction getDirection() {
         return direction;
+    }
+
+    public Coordinates getPosition() {
+        return position;
     }
 
 }
