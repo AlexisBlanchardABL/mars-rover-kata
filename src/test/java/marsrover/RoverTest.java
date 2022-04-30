@@ -25,6 +25,13 @@ public class RoverTest {
         assertThat(rover.getPosition()).isEqualTo(coordinates(1, 3));
     }
 
+    @Test
+    void roverMovesForwardOnceTowardEast() {
+        Rover rover = aRover(coordinates(1, 2), Direction.E);
+        rover.execute(new char[]{'f'});
+        assertThat(rover.getPosition()).isEqualTo(coordinates(2, 2));
+    }
+
     private Coordinates someCoordinates() {
         return coordinates(2, 7);
     }

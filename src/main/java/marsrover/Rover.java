@@ -19,7 +19,11 @@ public class Rover {
     }
 
     public void execute(char[] commands) {
-        position = new Coordinates(this.position.x(), this.position.y()+1);
+        if(Direction.N.equals(direction)) {
+            position = new Coordinates(this.position.x(), this.position.y() + 1);
+        } else if (Direction.E.equals(direction)) {
+            position = new Coordinates(this.position.x() + 1, this.position.y());
+        }
     }
 
 }
