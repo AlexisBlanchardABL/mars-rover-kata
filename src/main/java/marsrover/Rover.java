@@ -6,10 +6,12 @@ import java.util.Optional;
 
 public class Rover {
 
+    private final Planet planet;
     private Direction direction;
     private Coordinates position;
 
-    public Rover(Coordinates position, Direction direction) {
+    public Rover(Planet planet, Coordinates position, Direction direction) {
+        this.planet = planet;
         this.position = position;
         this.direction = direction;
     }
@@ -37,12 +39,16 @@ public class Rover {
     }
 
     private void move(Move command) {
-        position = switch (direction) {
-            case NORTH -> position.translate(Move.FORWARD.equals(command) ? Vector.UP : Vector.UP.opposite());
-            case SOUTH -> position.translate(Move.FORWARD.equals(command) ? Vector.DOWN : Vector.DOWN.opposite());
-            case EAST -> position.translate(Move.FORWARD.equals(command) ? Vector.RIGHT : Vector.RIGHT.opposite());
-            case WEST -> position.translate(Move.FORWARD.equals(command) ? Vector.LEFT : Vector.LEFT.opposite());
+        Vector nextMoveVector = switch (direction) {
+            case NORTH -> Move.FORWARD.equals(command) ? Vector.UP : Vector.UP.opposite();
+            case SOUTH -> Move.FORWARD.equals(command) ? Vector.DOWN : Vector.DOWN.opposite();
+            case EAST -> Move.FORWARD.equals(command) ? Vector.RIGHT : Vector.RIGHT.opposite();
+            case WEST -> Move.FORWARD.equals(command) ? Vector.LEFT : Vector.LEFT.opposite();
         };
+        Coordinates nextPosition = this.position.translate(nextMoveVector);
+        this.position = this.planet.contains(nextPosition) ?
+                nextPosition :
+                this.planet.wrapPositionAroundPlanet(position, nextMoveVector);
     }
 
     private void rotate(Rotate rotation) {

@@ -10,8 +10,12 @@ public class DataSet {
         return new Coordinates(x, y);
     }
 
-    static Rover aRover(Coordinates position, Direction direction) {
-        return new Rover(position, direction);
+    static Rover aRover(Planet planet, Coordinates position, Direction direction) {
+        return new Rover(planet, position, direction);
+    }
+
+    static Planet mars() {
+        return new Planet(20, 20);
     }
 
 }

@@ -13,7 +13,7 @@ public class RoverTest {
     @EnumSource(Direction.class)
     void shouldInitializeARoverWithItsPositionAndDirection(Direction direction) {
         Coordinates position = someCoordinates();
-        Rover rover = aRover(position, direction);
+        Rover rover = aRover(mars(), position, direction);
         assertThat(rover.getPosition()).isEqualTo(position);
         assertThat(rover.getDirection()).isEqualTo(direction);
     }

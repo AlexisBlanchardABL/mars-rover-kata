@@ -2,6 +2,7 @@ package marsrover;
 
 import org.junit.jupiter.api.Test;
 
+import static marsrover.DataSet.*;
 import static marsrover.DataSet.aRover;
 import static marsrover.DataSet.coordinates;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -10,9 +11,9 @@ public class ComplexRoverCommandsTest {
 
     @Test
     void roverMovesAndRotateMultipleTimes() {
-        Rover rover = aRover(coordinates(0, 0), Direction.WEST);
+        Rover rover = aRover(mars(), coordinates(5, 5), Direction.WEST);
         rover.execute('r', 'f', 'r', 'f', 'r', 'b');
-        assertThat(rover.getPosition()).isEqualTo(coordinates(1, 2));
+        assertThat(rover.getPosition()).isEqualTo(coordinates(6, 7));
     }
 
     @Test
