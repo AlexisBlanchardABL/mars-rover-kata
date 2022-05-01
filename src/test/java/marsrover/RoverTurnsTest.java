@@ -10,64 +10,64 @@ public class RoverTurnsTest {
 
     @Test
     void roverFacingNorthTurningRight_shouldFaceEast() {
-        Rover rover = aRover(coordinates(1, 2), Direction.N);
+        Rover rover = aRover(coordinates(1, 2), Direction.NORTH);
         rover.execute('r');
-        assertThat(rover.getDirection()).isEqualTo(Direction.E);
+        assertThat(rover.getDirection()).isEqualTo(Direction.EAST);
     }
 
     @Test
     void roverFacingEastTurningRight_shouldFaceSouth() {
-        Rover rover = aRover(coordinates(1, 2), Direction.E);
+        Rover rover = aRover(coordinates(1, 2), Direction.EAST);
         rover.execute('r');
-        assertThat(rover.getDirection()).isEqualTo(Direction.S);
+        assertThat(rover.getDirection()).isEqualTo(Direction.SOUTH);
     }
 
     @Test
     void roverFacingSouthTurningRight_shouldFaceWest() {
-        Rover rover = aRover(coordinates(1, 2), Direction.S);
+        Rover rover = aRover(coordinates(1, 2), Direction.SOUTH);
         rover.execute('r');
-        assertThat(rover.getDirection()).isEqualTo(Direction.W);
+        assertThat(rover.getDirection()).isEqualTo(Direction.WEST);
     }
 
     @Test
     void roverFacingWestTurningRight_shouldFaceNorth() {
-        Rover rover = aRover(coordinates(1, 2), Direction.W);
+        Rover rover = aRover(coordinates(1, 2), Direction.WEST);
         rover.execute('r');
-        assertThat(rover.getDirection()).isEqualTo(Direction.N);
+        assertThat(rover.getDirection()).isEqualTo(Direction.NORTH);
     }
 
     @Test
     void roverFacingNorthTurningLeft_shouldFaceWest() {
-        Rover rover = aRover(coordinates(1, 2), Direction.N);
+        Rover rover = aRover(coordinates(1, 2), Direction.NORTH);
         rover.execute('l');
-        assertThat(rover.getDirection()).isEqualTo(Direction.W);
+        assertThat(rover.getDirection()).isEqualTo(Direction.WEST);
     }
 
     @Test
     void roverFacingEastTurningLeft_shouldFaceNorth() {
-        Rover rover = aRover(coordinates(1, 2), Direction.E);
+        Rover rover = aRover(coordinates(1, 2), Direction.EAST);
         rover.execute('l');
-        assertThat(rover.getDirection()).isEqualTo(Direction.N);
+        assertThat(rover.getDirection()).isEqualTo(Direction.NORTH);
     }
 
     @Test
     void roverFacingSouthTurningLeft_shouldFaceEast() {
-        Rover rover = aRover(coordinates(1, 2), Direction.S);
+        Rover rover = aRover(coordinates(1, 2), Direction.SOUTH);
         rover.execute('l');
-        assertThat(rover.getDirection()).isEqualTo(Direction.E);
+        assertThat(rover.getDirection()).isEqualTo(Direction.EAST);
     }
 
     @Test
     void roverFacingWestTurningLeft_shouldFaceSouth() {
-        Rover rover = aRover(coordinates(1, 2), Direction.W);
+        Rover rover = aRover(coordinates(1, 2), Direction.WEST);
         rover.execute('l');
-        assertThat(rover.getDirection()).isEqualTo(Direction.S);
+        assertThat(rover.getDirection()).isEqualTo(Direction.SOUTH);
     }
 
     @Test
     void roversPositionDoNotChangeWhenTurning() {
         Coordinates position = coordinates(1, 2);
-        Rover rover = aRover(position, Direction.W);
+        Rover rover = aRover(position, Direction.WEST);
         rover.execute('l');
         assertThat(rover.getPosition()).isEqualTo(position);
     }

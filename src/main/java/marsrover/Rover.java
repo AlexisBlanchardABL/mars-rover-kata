@@ -1,8 +1,6 @@
 package marsrover;
 
 
-import java.util.Optional;
-
 public class Rover {
 
     private Direction direction;
@@ -28,10 +26,10 @@ public class Rover {
                     case RIGHT -> direction.right();
                     case LEFT -> direction.left();
                 }, () -> position = switch (direction) {
-                    case N -> new Coordinates(this.position.x(), this.position.y() + 1);
-                    case S -> new Coordinates(this.position.x(), this.position.y() - 1);
-                    case E -> new Coordinates(this.position.x() + 1, this.position.y());
-                    case W -> new Coordinates(this.position.x() - 1, this.position.y());
+                    case NORTH -> new Coordinates(this.position.x(), this.position.y() + 1);
+                    case SOUTH -> new Coordinates(this.position.x(), this.position.y() - 1);
+                    case EAST -> new Coordinates(this.position.x() + 1, this.position.y());
+                    case WEST -> new Coordinates(this.position.x() - 1, this.position.y());
                 });
     }
 

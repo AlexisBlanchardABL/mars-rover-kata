@@ -1,40 +1,40 @@
 package marsrover;
 
 public enum Direction {
-    N {
+    NORTH {
         Direction right() {
-            return E;
+            return EAST;
         }
 
         Direction left() {
-            return W;
+            return WEST;
         }
     },
-    S {
+    SOUTH {
         Direction right() {
-            return W;
+            return WEST;
         }
 
         Direction left() {
-            return E;
+            return EAST;
         }
     },
-    E {
+    EAST {
         Direction right() {
-            return S;
+            return SOUTH;
         }
 
         Direction left() {
-            return N;
+            return NORTH;
         }
     },
-    W {
+    WEST {
         Direction right() {
-            return N;
+            return NORTH;
         }
 
         Direction left() {
-            return S;
+            return SOUTH;
         }
     };
 
