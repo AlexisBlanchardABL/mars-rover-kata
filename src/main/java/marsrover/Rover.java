@@ -28,8 +28,8 @@ public class Rover {
 
     public void execute(Character... inputCommands) {
         for (Command command : validCommands(inputCommands)) {
-            if (command instanceof Rotate) {
-                rotate((Rotate) command);
+            if (command instanceof Rotation) {
+                rotate((Rotation) command);
             } else if (command instanceof Move) {
                 Move move = move((Move) command);
                 if (!move.isSuccess()) {
@@ -83,11 +83,8 @@ public class Rover {
         };
     }
 
-    private void rotate(Rotate rotation) {
-        direction = switch (rotation) {
-            case RIGHT -> direction.right();
-            case LEFT -> direction.left();
-        };
+    private void rotate(Rotation rotation) {
+        direction = direction.rotate(rotation);
     }
 
     public String getReport() {

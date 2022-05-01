@@ -42,4 +42,11 @@ public enum Direction {
 
     abstract Direction left();
 
+    Direction rotate(Rotation rotation) {
+        return switch (rotation) {
+            case RIGHT -> right();
+            case LEFT -> left();
+        };
+    }
+
 }

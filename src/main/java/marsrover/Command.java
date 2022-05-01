@@ -10,7 +10,7 @@ public interface Command {
 
     private static List<Command> values() {
         return Stream.of(
-                        List.<Command>of(Rotate.values()),
+                        List.<Command>of(Rotation.values()),
                         List.<Command>of(Move.values())
                 )
                 .flatMap(Collection::stream)
