@@ -1,5 +1,8 @@
 package marsrover;
 
+import java.util.Collections;
+import java.util.List;
+
 public class DataSet {
 
     static Coordinates someCoordinates() {
@@ -15,7 +18,11 @@ public class DataSet {
     }
 
     static Planet mars() {
-        return new Planet(20, 20);
+        return new Planet(20, 20, Collections.emptyList());
+    }
+
+    static Planet marsWithObstacles(List<Coordinates> obstacles) {
+        return new Planet(20, 20, obstacles);
     }
 
 }

@@ -1,13 +1,8 @@
 package marsrover;
 
-public class Planet {
-    private final int xLimit;
-    private final int yLimit;
+import java.util.List;
 
-    public Planet(int xLimit, int yLimit) {
-        this.xLimit = xLimit;
-        this.yLimit = yLimit;
-    }
+public record Planet(int xLimit, int yLimit, List<Coordinates> obstacles) {
 
     public boolean contains(Coordinates coordinates) {
         return !(

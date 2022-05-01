@@ -6,6 +6,7 @@ public enum Move implements Command {
     BACKWARD('b');
 
     private final char command;
+    private boolean executedWithSuccess;
 
     Move(char command) {
         this.command = command;
@@ -14,6 +15,14 @@ public enum Move implements Command {
     @Override
     public Character value() {
         return command;
+    }
+
+    public void success(boolean success) {
+        this.executedWithSuccess = success;
+    }
+
+    public boolean isSuccess() {
+        return executedWithSuccess;
     }
 
 }

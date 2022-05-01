@@ -2,6 +2,8 @@ package marsrover;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static marsrover.DataSet.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -96,6 +98,14 @@ public class RoverMovesTest {
         Rover rover = aRover(mars(), coordinates(5, 1), Direction.SOUTH);
         rover.execute('f');
         assertThat(rover.getPosition()).isEqualTo(coordinates(5, 20));
+    }
+
+    @Test
+    void roverMovesTowardAnObstacleAndReportObstacle() {
+        Coordinates roverPosition = coordinates(5, 7);
+        Rover rover = aRover(marsWithObstacles(List.of(new Coordinates(5, 6))), roverPosition, Direction.SOUTH);
+        rover.execute('f');
+        assertThat(rover.getReport()).isEqualTo("An obstacle was found on Coordinates: 5, 6");
     }
 
 }
