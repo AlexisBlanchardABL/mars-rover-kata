@@ -72,4 +72,12 @@ public class RoverTurnsTest {
         assertThat(rover.getPosition()).isEqualTo(position);
     }
 
+    @Test
+    void roversTurningMultipleTimes() {
+        Coordinates position = coordinates(1, 2);
+        Rover rover = aRover(position, Direction.NORTH);
+        rover.execute('l', 'l', 'r', 'l');
+        assertThat(rover.getDirection()).isEqualTo(Direction.SOUTH);
+    }
+
 }

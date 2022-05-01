@@ -1,13 +1,13 @@
 package marsrover;
 
+public enum Move implements Command {
 
-public enum Rotate implements Command {
-    LEFT('l'),
-    RIGHT('r');
+    FORWARD('f'),
+    BACKWARD('b');
 
     private final char command;
 
-    Rotate(char command) {
+    Move(char command) {
         this.command = command;
     }
 

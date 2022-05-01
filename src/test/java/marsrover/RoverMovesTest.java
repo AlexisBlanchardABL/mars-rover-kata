@@ -64,4 +64,11 @@ public class RoverMovesTest {
         assertThat(rover.getPosition()).isEqualTo(coordinates(2, 2));
     }
 
+    @Test
+    void roverMovesMultipleTimes() {
+        Rover rover = aRover(coordinates(1, 2), Direction.NORTH);
+        rover.execute('f', 'f', 'b', 'f');
+        assertThat(rover.getPosition()).isEqualTo(coordinates(1, 4));
+    }
+
 }
