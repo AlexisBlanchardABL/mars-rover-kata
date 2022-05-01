@@ -26,10 +26,10 @@ public class Rover {
                     case RIGHT -> direction.right();
                     case LEFT -> direction.left();
                 }, () -> position = switch (direction) {
-                    case NORTH -> new Coordinates(this.position.x(), this.position.y() + 1);
-                    case SOUTH -> new Coordinates(this.position.x(), this.position.y() - 1);
-                    case EAST -> new Coordinates(this.position.x() + 1, this.position.y());
-                    case WEST -> new Coordinates(this.position.x() - 1, this.position.y());
+                    case NORTH -> position.translate('f' == firstCommand ? Vector.UP : Vector.UP.opposite());
+                    case SOUTH -> position.translate('f' == firstCommand ? Vector.DOWN : Vector.DOWN.opposite());
+                    case EAST -> position.translate('f' == firstCommand ? Vector.RIGHT : Vector.RIGHT.opposite());
+                    case WEST -> position.translate('f' == firstCommand ? Vector.LEFT : Vector.LEFT.opposite());
                 });
     }
 

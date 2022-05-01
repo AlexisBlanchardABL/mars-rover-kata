@@ -36,4 +36,32 @@ public class RoverMovesTest {
         assertThat(rover.getPosition()).isEqualTo(coordinates(0, 2));
     }
 
+    @Test
+    void roverFacingNorthMovesBackward() {
+        Rover rover = aRover(coordinates(1, 2), Direction.NORTH);
+        rover.execute('b');
+        assertThat(rover.getPosition()).isEqualTo(coordinates(1, 1));
+    }
+
+    @Test
+    void roverFacingEastMovesBackward() {
+        Rover rover = aRover(coordinates(1, 2), Direction.EAST);
+        rover.execute('b');
+        assertThat(rover.getPosition()).isEqualTo(coordinates(0, 2));
+    }
+
+    @Test
+    void roverFacingSouthMovesBackward() {
+        Rover rover = aRover(coordinates(1, 2), Direction.SOUTH);
+        rover.execute('b');
+        assertThat(rover.getPosition()).isEqualTo(coordinates(1, 3));
+    }
+
+    @Test
+    void roverFacingWestMovesBackward() {
+        Rover rover = aRover(coordinates(1, 2), Direction.WEST);
+        rover.execute('b');
+        assertThat(rover.getPosition()).isEqualTo(coordinates(2, 2));
+    }
+
 }
