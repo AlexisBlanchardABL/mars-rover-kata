@@ -16,4 +16,15 @@ public enum Rotation implements Command {
         return command;
     }
 
+    @Override
+    public Command executeOn(Rover rover) {
+        rover.rotate(this);
+        return this;
+    }
+
+    @Override
+    public boolean isSuccess() {
+        return true;
+    }
+
 }

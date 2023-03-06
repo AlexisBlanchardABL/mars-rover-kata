@@ -26,4 +26,8 @@ public interface Command {
 
     Character value();
 
+    Command executeOn(Rover rover);
+
+    boolean isSuccess();
+
 }

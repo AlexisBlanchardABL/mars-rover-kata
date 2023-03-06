@@ -28,13 +28,8 @@ public class Rover {
 
     public void execute(Character... inputCommands) {
         for (Command command : validCommands(inputCommands)) {
-            if (command instanceof Rotation) {
-                rotate((Rotation) command);
-            } else if (command instanceof Move) {
-                Move move = move((Move) command);
-                if (!move.isSuccess()) {
-                    break;
-                }
+            if (Boolean.FALSE.equals(command.executeOn(this).isSuccess())) {
+                break;
             }
         }
     }
@@ -47,17 +42,7 @@ public class Rover {
                 .toList();
     }
 
-    private Move move(Move command) {
-        Vector vector = vectorFrom(direction, command);
-        computeNextPosition(vector)
-                .ifPresent(newPosition -> {
-                    command.success(true);
-                    this.position = newPosition;
-                });
-        return command;
-    }
-
-    private Optional<Coordinates> computeNextPosition(Vector vector) {
+    Optional<Coordinates> computeNextPosition(Vector vector) {
         Coordinates nextPosition = getPlanetWrappedPosition(vector, this.position.translate(vector));
         if (this.planet.obstacles().contains(nextPosition)) {
             reportObstacle(nextPosition);
@@ -74,21 +59,16 @@ public class Rover {
         this.report = String.format("An obstacle was found on Coordinates: %s, %s", obstacleCoordinate.x(), obstacleCoordinate.y());
     }
 
-    private static Vector vectorFrom(Direction currentDirection, Move move) {
-        return switch (currentDirection) {
-            case NORTH -> Move.FORWARD.equals(move) ? Vector.UP : Vector.UP.opposite();
-            case SOUTH -> Move.FORWARD.equals(move) ? Vector.DOWN : Vector.DOWN.opposite();
-            case EAST -> Move.FORWARD.equals(move) ? Vector.RIGHT : Vector.RIGHT.opposite();
-            case WEST -> Move.FORWARD.equals(move) ? Vector.LEFT : Vector.LEFT.opposite();
-        };
-    }
-
-    private void rotate(Rotation rotation) {
+    public void rotate(Rotation rotation) {
         direction = direction.rotate(rotation);
     }
 
     public String getReport() {
         return report;
+    }
+
+    public void updatePosition(Coordinates newPosition) {
+        position = newPosition;
     }
 
 }
