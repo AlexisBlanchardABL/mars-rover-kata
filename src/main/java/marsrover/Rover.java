@@ -9,10 +9,10 @@ public class Rover {
 
     private final Planet planet;
     private Direction direction;
-    private Coordinates position;
+    private Position position;
     private String report;
 
-    public Rover(Planet planet, Coordinates position, Direction direction) {
+    public Rover(Planet planet, Position position, Direction direction) {
         this.planet = planet;
         this.position = position;
         this.direction = direction;
@@ -22,7 +22,7 @@ public class Rover {
         return direction;
     }
 
-    public Coordinates getPosition() {
+    public Position getPosition() {
         return position;
     }
 
@@ -42,16 +42,16 @@ public class Rover {
                 .toList();
     }
 
-    Optional<Coordinates> computeNextPosition(Vector vector) {
-        Coordinates nextPosition = getPlanetWrappedPosition(vector, this.position.translate(vector));
-        if (this.planet.obstacles().contains(nextPosition)) {
+    Optional<Position> computeNextPosition(Vector vector) {
+        Position nextPosition = getPlanetWrappedPosition(vector, this.position.translate(vector));
+        if (this.planet.isObstacleOn(nextPosition)) {
             reportObstacle(nextPosition);
             return Optional.empty();
         }
         return Optional.of(nextPosition);
     }
 
-    private Coordinates getPlanetWrappedPosition(Vector vector, Coordinates position) {
+    private Position getPlanetWrappedPosition(Vector vector, Position position) {
         return this.planet.contains(position) ? position : this.planet.wrapPositionAroundPlanet(this.position, vector);
     }
 
@@ -67,7 +67,7 @@ public class Rover {
         return report;
     }
 
-    public void updatePosition(Coordinates newPosition) {
+    public void updatePosition(Position newPosition) {
         position = newPosition;
     }
 

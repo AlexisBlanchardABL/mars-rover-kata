@@ -5,15 +5,15 @@ import java.util.List;
 
 public class DataSet {
 
-    static Coordinates someCoordinates() {
-        return coordinates(2, 7);
+    static Position somePosition() {
+        return position(2, 7);
     }
 
-    static Coordinates coordinates(int x, int y) {
-        return new Coordinates(x, y);
+    static Position position(int x, int y) {
+        return new Position(x, y);
     }
 
-    static Rover aRover(Planet planet, Coordinates position, Direction direction) {
+    static Rover aRover(Planet planet, Position position, Direction direction) {
         return new Rover(planet, position, direction);
     }
 
@@ -21,7 +21,7 @@ public class DataSet {
         return new Planet(20, 20, Collections.emptyList());
     }
 
-    static Planet marsWithObstacles(List<Coordinates> obstacles) {
+    static Planet marsWithObstacles(List<Obstacle> obstacles) {
         return new Planet(20, 20, obstacles);
     }
 

@@ -12,7 +12,7 @@ public class RoverTest {
     @ParameterizedTest
     @EnumSource(Direction.class)
     void shouldInitializeARoverWithItsPositionAndDirection(Direction direction) {
-        Coordinates position = someCoordinates();
+        Position position = somePosition();
         Rover rover = aRover(mars(), position, direction);
         assertThat(rover.getPosition()).isEqualTo(position);
         assertThat(rover.getDirection()).isEqualTo(direction);
