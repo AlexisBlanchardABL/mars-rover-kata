@@ -20,7 +20,7 @@ public interface Command {
     static Optional<Command> validate(Character command) {
         return values()
                 .stream()
-                .filter(validCommands -> Objects.equals(validCommands.value(), command))
+                .filter(validCommand -> Objects.equals(validCommand.value(), command))
                 .findAny();
     }
 
